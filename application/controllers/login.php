@@ -47,7 +47,7 @@ private $obj_login;
                          $this->session->set_userdata($sessiondata);
                         // $res['dat']='angel';
                         // redirect("principal/index",$res);
-                         $this->vista_principal($username);
+                         $this->vista_principal($username,$password);
                     }
                     else
                     {
@@ -62,12 +62,31 @@ private $obj_login;
           }
           
      }
-     public function vista_principal($usu) {
+     public function vista_principal($usu,$pass) {
           $res['name']=$usu;
+          $id_persona = $this->generic_model->get_val_where('gp_persona',array('usu'=>$usu, 'pass'=>$pass),'id');
+         // $id_mod= $this->generic_model->get('gp_mod_persona',array('id_persona'=>$id_persona),'id_modulo');
+         // $res['dat'] = $this->generic_model->get('gp_modulos',array('id'=>$id_mod),'');
           
-         $this->load->view('dasboard/slidebar_lte',$res);
+//          $where_data = array('id_persona bf' => $id_persona);, 'bf.estado' => $estado, 'bf.empleado_vendedor' => $empleado_id, "bf.fechaCreacion between '" . $this->fecha_ini . "' and " => $this->fecha_fin);
+          $where_data = array('bf.id_persona' => $id_persona);
+          $join_cluase = array(
+            '0' => array('table' => 'gp_modulos bc', 'condition' => 'bf.id_modulo = bc.id_mod'),
+            '1' => array('table' => 'gp_persona be', 'condition' => 'bf.id_persona = be.id'));
+            
+
+        $res['dat'] = $this->generic_model->get_join(
+                'gp_mod_persona bf', $where_data, $join_cluase, 'bf.*, bc.*, be.*', '');
+
+      
+          $this->load->view('dasboard/panel_control',$res);
+       //   $this->load->view('dasboard/head_simple',$res);
+          
          //$this->load->view('vista_personas');
      
+     }
+     public function control_panel() {
+         $this->load->view('dasboard/panel_control');
      }
      
 }
