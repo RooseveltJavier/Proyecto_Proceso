@@ -12,6 +12,6 @@ class Welcome extends CI_Controller {
     public function index()
 	{       
           //      $res['dato']=  $this->generic_model->get('prueba');
-            	$this->load->view('login/login');
+            	$this->load->view('login/login_view_2');
 	}
 }

@@ -28,6 +28,16 @@ class propuesta extends CI_Controller{
         $this->load->view('dasboard/dashboard_lte', $res,'',TRUE);
  }
  public function new_propuesta() {
-     
+      //  $res['view'] = $this->load->view('propuestas/new_propuesta', '', TRUE);
+         $res['view'] = $this->list_departamentos();
+        $res['slidebar'] = $this->load->view('propuestas/slidebar_lte', '', TRUE);
+        $this->load->view('dasboard/dashboard_lte', $res,'',TRUE);
  }
+ public function list_departamentos() {
+        $res['depar'] = $this->generic_model->get('gp_departamentos');
+        $res['periodo'] = $this->generic_model->get('gp_periodo');
+        
+        $output = $this->load->view('propuestas/new_propuesta', $res,TRUE);
+        return $output;
+    }
 }

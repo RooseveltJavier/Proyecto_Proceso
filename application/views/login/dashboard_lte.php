@@ -102,7 +102,7 @@
         $open_content_div = '';
         $close_content_div = '';
                 
-            echo $this->load->view('dasboard/navigation_lte','',TRUE);
+            echo $this->load->view('login/navigation_lte','',TRUE);
             
             if(!empty($slidebar)){                
                 echo $slidebar;   
@@ -148,7 +148,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.0
         </div>
-          <strong>Año Educativo &copy; 2015-2016 <a href="<?=  base_url()?>">GESTION DE PROCESOS</a>.</strong> Proyecto de Fin de Ciclo.
+          <!--<strong>Año Educativo &copy; 2015-2016 <a href="<?=  base_url()?>">GESTION DE PROCESOS</a>.</strong> Proyecto de Fin de Ciclo.-->
       </footer>
     </div><!-- ./wrapper -->
 

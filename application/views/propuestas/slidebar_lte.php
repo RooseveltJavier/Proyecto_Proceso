@@ -5,7 +5,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <?php
-          //      echo $this->load->view('login/user_logo','',TRUE);
+                echo $this->load->view('login/user_logo','',TRUE);
             ?>
           </div>
           
@@ -22,10 +22,10 @@
             <li class="header">NOMINA</li>
             
                 <li> 
-                    <a href="<?= base_url('propuesta/new_propuesta') ?>"><i class="glyphicon glyphicon-hand-up"></i>Nueva Propuesta</a> 
+                    <a href="<?= base_url('propuestas/propuesta/new_propuesta') ?>"><i class="glyphicon glyphicon-hand-up"></i>Nueva Propuesta</a> 
                 </li>
                 <li> 
-                    <a href="<?= base_url('propuesta/get_crud') ?>"><i class="glyphicon glyphicon-hand-up"></i>Listar Propuestas Existentes</a> 
+                    <a href="<?= base_url('propuestas/propuesta/get_crud') ?>"><i class="glyphicon glyphicon-hand-up"></i>Listar Propuestas Existentes</a> 
                 </li>
           
           </ul>

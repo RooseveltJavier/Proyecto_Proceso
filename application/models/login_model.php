@@ -1,35 +1,65 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
-class login_model extends CI_Model
-
+<?php
+Class Login_model extends CI_Model
 {
-     private $ci=NULL;
+ function login($username, $password)
+ {
 
-     function __construct()
-     {
-          // Call the Model constructor
-         
-           $this->ci =& get_instance();
-          parent::__construct();
-       
-        $this->ci->load->model('generic_model');
-     }
-
-     //get the username & password from tbl_usrs
-     function get_user($usr, $pwd)
-     {
-        //  $sql = "select * from tbl_usrs where username = '" . $usr . "' and password = '" . md5($pwd) . "' and status = 'active'";
-         // $query = $this->db->query($sql);
-         // return $query->num_rows();
-       
-        $this->ci->db->select('*');
-        $this->ci->db->from('gp_persona');
-        $this->ci->db->where('usu' ,$usr);
-        $this->ci->db->where('pass', $pwd);
-       // $this->ci->db->where('id_dia', $id_dia);
-
-        $query = $this->ci->db->get();
-
-        return $query->num_rows();
-     }
+    $query = $this->db->query('SELECT em.id, em.cedula cedulausu, em.usu username,
+	em.nombres nombres, em.apellidos apellidos,em.essuperusuario essuperusuario ,em.email email
+	FROM  gp_persona em
+    	WHERE em.usu = "' . $username . '" AND em.pass = "' . $password . '"');
+   if($query -> num_rows() == 1)
+   {
+     return $query->result();
+   }
+   else
+   {
+     return false;
+   }
+ }
 }
+
+
+//if (!defined('BASEPATH'))
+//    exit('No direct script access allowed');
+//
+//class login_model extends CI_Model {
+//
+//    private $ci = NULL;
+//
+//    function __construct() {
+//         $this->ci = & get_instance();
+//        parent::__construct();
+//
+//        $this->ci->load->model('generic_model');
+//    }
+//    function login_s($username, $password) {
+//        $this->ci->db->select('em.id, em.cedula cedulausu, em.usu username,
+//	em.nombres nombres, em.apellidos apellidos,em.essuperusuario essuperusuario ,em.email email');
+//        $this->ci->db->from('gp_persona em');
+//        $this->ci->db->where('em.usu', $username);
+//        $this->ci->db->where('em.pass', $password);
+//        $query = $this->ci->db->get();
+//        if ($query->num_rows() == 1) {
+//            return $query->result();
+//        } else {
+//            return false;
+//        }
+//    }
+//
+//    function login($username, $password) {
+////WHERE em.usu = "' . $username . '" AND em.pass = "' . MD5($password . get_settings('PASSWORDSALTMAIN')) . '"');
+//        
+//        $query = $this->ci->db->query('SELECT em.id, em.cedula cedulausu, em.usu username,
+//	em.nombres nombres, em.apellidos apellidos,em.essuperusuario essuperusuario ,em.email email
+//	FROM  gp_persona em
+//    	WHERE em.usu = "' . $username . '" AND em.pass = "' . $password . '"');
+//        
+//        if ($query->num_rows() == 1) {
+//            return $query->result();
+//        } else {
+//            return false;
+//        }
+//    }
+//
+//}

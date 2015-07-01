@@ -5,7 +5,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <?php
-          //      echo $this->load->view('login/user_logo','',TRUE);
+                echo $this->load->view('login/user_logo','',TRUE);
             ?>
           </div>
           
@@ -22,10 +22,10 @@
             <li class="header">NOMINA</li>
             
                 <li> 
-                    <a href="<?= base_url('estudiantes/new_estudiante') ?>"><i class="glyphicon glyphicon-hand-up"></i>Ingresar Estudiante</a> 
+                    <a href="<?= base_url('estudiante/estudiantes/new_estudiante') ?>"><i class="glyphicon glyphicon-hand-up"></i>Ingresar Estudiante</a> 
                 </li>
                 <li> 
-                    <a href="<?= base_url('estudiantes/get_crud') ?>"><i class="glyphicon glyphicon-hand-up"></i>Config Estudiante</a> 
+                    <a href="<?= base_url('estudiante/estudiantes/get_crud') ?>"><i class="glyphicon glyphicon-hand-up"></i>Config Estudiante</a> 
                 </li>
           
           </ul>

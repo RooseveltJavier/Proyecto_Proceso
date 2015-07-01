@@ -24,13 +24,10 @@ class User {
         $this->nombres = $ci->session->userdata('nombres');
         $this->apellidos = $ci->session->userdata('apellidos');
         $this->email = $ci->session->userdata('email');
-        $this->telefonos = $ci->session->userdata('telefonos');
-        $this->celular = $ci->session->userdata('celular');
+     //   $this->telefonos = $ci->session->userdata('telefonos');
+       // $this->celular = $ci->session->userdata('celular');
         $this->essuperusuario = $ci->session->userdata('essuperusuario');
         $this->root = $ci->session->userdata('essuperusuario');
-//        $this->rucempresa = $ci->session->userdata('rucempresa');
-        $this->ivaporcent = 12;
-        $this->numdecimales = 2;
     }
        
     function getAllCapabilities(){

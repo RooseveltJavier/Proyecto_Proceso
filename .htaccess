@@ -11,4 +11,13 @@ RewriteRule (.*?)index\.php/*(.*) gp_proyecto_procesos/$1$2 [R=301,NE,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ gp_proyecto_procesos/index.php/$1 [L]
+
+    RewriteEngine On 
+    RewriteCond %{REQUEST_FILENAME} !-f 
+    RewriteCond %{REQUEST_FILENAME} !-d 
+    RewriteRule ^(.*)$ /gp_proyecto_procesos/index.php/$1 [L] 
+
+
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 /gp_proyecto_procesos/index.php 
 </IfModule>
